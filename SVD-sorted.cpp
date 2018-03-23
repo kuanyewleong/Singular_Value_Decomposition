@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
 	
 	// a fast approach to read from file and push_back into a vector
 	char c; // to flush the commas
-	double v,w,x,y,z;
+	double w,x,y,z;
 	vector<double> data;
 
 	ifstream file("iris.csv");
@@ -22,9 +22,8 @@ int main(int argc, char* argv[]) {
 		return 1;
 	}
 
-	while (file >> v >> c >> w >> c >> x >> c >> y >> c >> z)
-	{
-		data.push_back(v);
+	while (file >> w >> c >> x >> c >> y >> c >> z)
+	{		
 		data.push_back(w);
 		data.push_back(x);
 		data.push_back(y);
@@ -33,7 +32,7 @@ int main(int argc, char* argv[]) {
 	}
 
 	// set size of the matrix, M x N (M dimensions, N samples)
-	int MRow = 5, NCol = data.size() / MRow;
+	int MRow = 4, NCol = data.size() / MRow;
 	int m = NCol, n = MRow; // swap the matrix size mxn, needed later	
 	vector<double> all_sum, mean, Y;
 
@@ -83,7 +82,7 @@ int main(int argc, char* argv[]) {
 		{
 			M[counter1] = Y[counter2];
 			counter1++;
-			counter2 += 5;
+			counter2 += 4;
 		}
 	}		
 
@@ -99,7 +98,7 @@ int main(int argc, char* argv[]) {
 		char JOBU = 'S';
 		char JOBVT = 'S';
 		int wssize = 3 * (m<n ? m : n) + (m>n ? m : n);
-		int wssize1 = 5 * (m<n ? m : n);
+		int wssize1 = 4 * (m<n ? m : n);
 		wssize = (wssize>wssize1 ? wssize : wssize1);
 		Real_t* wsbuf = new Real_t[wssize];		
 		svd(&JOBU, &JOBVT, &m, &n, &M[0], &m, &S[0], &u[0], &m, &PC[0], &k, wsbuf, &wssize, &INFO);
