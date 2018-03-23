@@ -13,7 +13,7 @@ int main(int argc, char* argv[]) {
 	double v,w,x,y,z;
 	vector<double> data;
 
-	ifstream file("test_output1.csv");
+	ifstream file("iris.csv");
 
 	// check whether if the file is available
 	if (!file.is_open())
